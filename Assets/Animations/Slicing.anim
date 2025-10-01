@@ -17,26 +17,87 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
+  m_PPtrCurves:
+  - serializedVersion: 2
+    curve:
+    - time: 0
+      value: {fileID: 4845699418021079953, guid: bea5a4535087ebe4dbe6590f7270dada, type: 3}
+    - time: 0.05
+      value: {fileID: -5416472774606187569, guid: c0fbe4190d7317442b6b3dd7f27553aa, type: 3}
+    - time: 0.1
+      value: {fileID: -6326622654416649841, guid: 6b35e82871bda624881a8de261376272, type: 3}
+    - time: 0.15
+      value: {fileID: -1312121191962840064, guid: 0ac9ebfcbee514d4ab17c87fb68e57f4, type: 3}
+    - time: 0.2
+      value: {fileID: -5468392173629538667, guid: b0f7663c2a237f647878567161af0e33, type: 3}
+    - time: 0.25
+      value: {fileID: -846806147661342255, guid: 6261b93bf8094964c9cbf546914986d6, type: 3}
+    - time: 0.3
+      value: {fileID: -3053062312363622469, guid: da1519eb78987ee418082dd3823607db, type: 3}
+    - time: 0.35
+      value: {fileID: -5835406282208571859, guid: 1c6d3e1e3318bfd43ba9b772da088639, type: 3}
+    - time: 0.4
+      value: {fileID: 5735041912881095053, guid: fd3c95fd125100340ae4bfdafa93c7f9, type: 3}
+    - time: 0.45
+      value: {fileID: -1751547577383788495, guid: 161b9ee0aa7130744b36a83d280c7658, type: 3}
+    - time: 0.5
+      value: {fileID: -2672508247102630097, guid: fbca038fc5da2ac48b9a227ad0619540, type: 3}
+    - time: 0.55
+      value: {fileID: 6811974279429389065, guid: 0a6eaa7247f2d1640bbf661a2201bebf, type: 3}
+    - time: 0.6
+      value: {fileID: -1580702878394882440, guid: 7fddb16045ebe6247af4507f049238f8, type: 3}
+    - time: 0.65
+      value: {fileID: -375226725290471519, guid: 7eeb8281ad70c41449f20109376ce1b7, type: 3}
+    - time: 0.7
+      value: {fileID: 884479449217886295, guid: 6031cdfda3611f046a51ae50851fdc67, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+    flags: 2
   m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: 4845699418021079953, guid: bea5a4535087ebe4dbe6590f7270dada, type: 3}
+    - {fileID: -5416472774606187569, guid: c0fbe4190d7317442b6b3dd7f27553aa, type: 3}
+    - {fileID: -6326622654416649841, guid: 6b35e82871bda624881a8de261376272, type: 3}
+    - {fileID: -1312121191962840064, guid: 0ac9ebfcbee514d4ab17c87fb68e57f4, type: 3}
+    - {fileID: -5468392173629538667, guid: b0f7663c2a237f647878567161af0e33, type: 3}
+    - {fileID: -846806147661342255, guid: 6261b93bf8094964c9cbf546914986d6, type: 3}
+    - {fileID: -3053062312363622469, guid: da1519eb78987ee418082dd3823607db, type: 3}
+    - {fileID: -5835406282208571859, guid: 1c6d3e1e3318bfd43ba9b772da088639, type: 3}
+    - {fileID: 5735041912881095053, guid: fd3c95fd125100340ae4bfdafa93c7f9, type: 3}
+    - {fileID: -1751547577383788495, guid: 161b9ee0aa7130744b36a83d280c7658, type: 3}
+    - {fileID: -2672508247102630097, guid: fbca038fc5da2ac48b9a227ad0619540, type: 3}
+    - {fileID: 6811974279429389065, guid: 0a6eaa7247f2d1640bbf661a2201bebf, type: 3}
+    - {fileID: -1580702878394882440, guid: 7fddb16045ebe6247af4507f049238f8, type: 3}
+    - {fileID: -375226725290471519, guid: 7eeb8281ad70c41449f20109376ce1b7, type: 3}
+    - {fileID: 884479449217886295, guid: 6031cdfda3611f046a51ae50851fdc67, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.71666664
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
