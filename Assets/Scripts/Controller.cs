@@ -1,17 +1,19 @@
+using System.Collections;
 using UnityEngine;
 //Script de controle do Personagem e seus estados.
 [RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(SpriteRenderer))]
 public class Controller : MonoBehaviour
 {
-    [Header("Configurações de Movimento")]
+    [Header("Configurações do Personagem")]
     [SerializeField] float velocidadeX_run = 3.5f;
     [SerializeField] float velocidadeY_jump = 7f;
     [SerializeField] float climbSpeed = 3f;
-
+    [SerializeField] float hp = 3f;
+    float max_hp;
 
     [Header("Verificar Chão")]
     [SerializeField] Transform checarChao;
-    [SerializeField] float raycastDistance = 0.7f;
+    [SerializeField] float raycastDistance = 0.3f;
     [SerializeField] LayerMask groundCheck;
 
     [Header("Verificar Parede")]
@@ -26,6 +28,7 @@ public class Controller : MonoBehaviour
 
     void Awake()
     {
+        max_hp = hp; //vida
         animator = GetComponent<Animator>();
         physics = GetComponent<Rigidbody2D>();
         defaultGravityScale = physics.gravityScale;
@@ -35,10 +38,11 @@ public class Controller : MonoBehaviour
     }
     void FixedUpdate()
     {
-        
+
         Movimentacao(); //lidar com movimentação
         UpdateAnimatorInfo(); //atualizar Parameters do animator
     }
+
     private void PlayerInput()
     {
         /*
@@ -49,18 +53,18 @@ public class Controller : MonoBehaviour
             Arremesso = C;
             Deslizar = V;
         */
-        if (isGrounded){ doubleJump = true; }
+        if (isGrounded) { doubleJump = true; }
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             animator.SetTrigger("jump");
             physics.linearVelocity = new Vector2(physics.linearVelocity.x, velocidadeY_jump);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && airborne){
+        if (Input.GetKeyDown(KeyCode.Space) && airborne && doubleJump == true)
+        {
             animator.SetTrigger("jump");
             physics.linearVelocity = new Vector2(physics.linearVelocity.x, velocidadeY_jump);
             doubleJump = false;
-            animator.SetBool("doubleJump", doubleJump);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
@@ -128,5 +132,25 @@ public class Controller : MonoBehaviour
         animator.SetBool("estaNoChao", isGrounded);
         animator.SetBool("estaNoAr", airborne);
         animator.SetBool("doubleJump", doubleJump);
+    }
+    public void levarDano(float danoTomado)
+    {
+        animator.SetTrigger("hurt");
+        hp -= danoTomado;
+        if (hp <= 0)
+        {
+            animator.SetTrigger("dead");
+            StartCoroutine(PauseGameAfterDeath());
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Hurt"){
+            levarDano(1f);
+        }
+    }
+    IEnumerator PauseGameAfterDeath() {
+     yield return new WaitForSeconds(2f);
+     Time.timeScale = 0f; 
     }
 }
