@@ -109,8 +109,8 @@ public class Controller : MonoBehaviour
         isGrounded = Physics2D.Raycast(checarChao.position, Vector2.down, raycastDistance, groundCheck).collider != null;
         airborne = Physics2D.Raycast(checarChao.position, Vector2.down, raycastDistance, groundCheck).collider == null;
 
-        isNearWall = Physics2D.Raycast(checkWall.position, transform.right, wallDistanceCheck, wallClimbCheck).collider != null;
-        Debug.DrawRay(checkWall.position, transform.right * wallDistanceCheck, Color.green);
+        isNearWall = Physics2D.Raycast(checkWall.position, transform.localScale, wallDistanceCheck, wallClimbCheck).collider != null;
+        Debug.DrawRay(checkWall.position, transform.localScale * wallDistanceCheck, Color.green);
 
         if (isNearWall && Mathf.Abs(verticalInput) > 0.1f)
         {

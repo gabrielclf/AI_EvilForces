@@ -340,7 +340,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &446187634
 Transform:
   m_ObjectHideFlags: 0
@@ -350,7 +350,7 @@ Transform:
   m_GameObject: {fileID: 446187631}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1907, y: -2.18, z: 0}
+  m_LocalPosition: {x: -0.1907, y: -2.15, z: 0}
   m_LocalScale: {x: 0.34076628, y: 0.34076628, z: 0.8519157}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -419,8 +419,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.09484199, y: -0.4979205}
-  m_Size: {x: 3.3999944, y: 5.9490027}
+  m_Offset: {x: -0.09484199, y: -0.4762106}
+  m_Size: {x: 3.3999944, y: 5.905583}
   m_Direction: 0
 --- !u!114 &446187637
 MonoBehaviour:
@@ -439,7 +439,7 @@ MonoBehaviour:
   climbSpeed: 3
   hp: 3
   checarChao: {fileID: 1634437138}
-  raycastDistance: 0.7
+  raycastDistance: 0.3
   groundCheck:
     serializedVersion: 2
     m_Bits: 64
