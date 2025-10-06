@@ -10,7 +10,7 @@ Prova Prática de Inteligência Artificial em Máquinas de Estado Finitas
 
 ## Controles:
 Pular: **Barra de Espaço**    
-Pulo Duplo: No ar, **Barra de espaço**  novamente
+Pulo Duplo: No ar, **Barra de espaço** novamente  
 Ataque com espada : **Z**  
 Disparo com pistola : **X**  
 Arremesso : **C**  
