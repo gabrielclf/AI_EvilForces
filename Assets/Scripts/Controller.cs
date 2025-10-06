@@ -9,7 +9,7 @@ public class Controller : MonoBehaviour
     [SerializeField] float velocidadeY_jump = 7f;
     [SerializeField] float climbSpeed = 3f;
     [SerializeField] float hp = 3f;
-    float max_hp;
+    [SerializeField] private bool _active = true;
 
     [Header("Verificar Chão")]
     [SerializeField] Transform checarChao;
@@ -23,17 +23,26 @@ public class Controller : MonoBehaviour
 
     private Animator animator;
     private Rigidbody2D physics;
+    private Collider2D _colider;
     private bool isGrounded, airborne, isNearWall, doubleJump = true; //checar se está no chão, ar, proximo à parede, ou se ja deu um pulo duplo
     private float defaultGravityScale;
+    private Vector2 _respawn;
 
     void Awake()
     {
-        max_hp = hp; //vida
         animator = GetComponent<Animator>();
         physics = GetComponent<Rigidbody2D>();
         defaultGravityScale = physics.gravityScale;
     }
-    void Update(){
+
+    void Start()
+    {
+        _colider = GetComponent<Collider2D>();
+        SetRespawnPoint(transform.position);
+    }
+    void Update()
+    {
+        if (!_active) { return; }
         PlayerInput(); //controles do jogador - Li que ao coloca-lós em fixed update, podem ocorrer delays
     }
     void FixedUpdate()
@@ -117,7 +126,9 @@ public class Controller : MonoBehaviour
             animator.SetBool("estaEscalando", true);
             physics.linearVelocity = new Vector2(physics.linearVelocity.x, verticalInput * climbSpeed);
             physics.gravityScale = 0f;
-        } else {
+        }
+        else
+        {
             animator.SetBool("estaEscalando", false);
             float currentSpeed = velocidadeX_run;
             physics.gravityScale = defaultGravityScale;
@@ -139,18 +150,38 @@ public class Controller : MonoBehaviour
         hp -= danoTomado;
         if (hp <= 0)
         {
-            animator.SetTrigger("dead");
-            StartCoroutine(PauseGameAfterDeath());
+            Die();
+
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Hurt"){
+        if (collision.gameObject.tag == "Hurt")
+        {
             levarDano(1f);
         }
     }
-    IEnumerator PauseGameAfterDeath() {
-     yield return new WaitForSeconds(2f);
-     Time.timeScale = 0f; 
+    IEnumerator TimeAfterDeath()
+    {
+        yield return new WaitForSeconds(2f);
+    }
+    public void Die()
+    {
+        animator.SetTrigger("dead");
+        StartCoroutine(TimeAfterDeath());
+        _active = false; _colider.enabled = false;
+        StartCoroutine(Respawning());
+    }
+
+    public void SetRespawnPoint(Vector2 position)
+    {
+        _respawn = position;
+    }
+    private IEnumerator Respawning(){
+        yield return new WaitForSeconds(1f);
+        transform.position = _respawn;
+        _active = true;
+        _colider.enabled = true;
+        hp = 3;
     }
 }
